@@ -14,11 +14,9 @@ try:
 
     vk = vk_session.get_api()
 
-    groups = vk.groups.get(count=1000)
+    print(f'Found {vk.groups.get()["count"]} groups.')
 
-    print(f'Found {groups["count"]} groups.')
-
-    while groups['count'] != 0:
+    while vk.groups.get(count=1000)['count'] != 0:
         for group_id in vk.groups.get(count=1000)['items']:
             vk.groups.leave(group_id=group_id)
 
