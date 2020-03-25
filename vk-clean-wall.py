@@ -15,14 +15,9 @@ try:
 
     vk = vk_session.get_api()
 
-    while vk.photos.getAll()['count'] != 0:
-        for photo in vk.photos.getAll(count=200)['items']:
-            vk.photos.delete(photo_id=photo['id'])
-            time.sleep(2)
-   
-    while vk.photos.getAlbums()['count'] != 0:
-        for album in vk.photos.getAlbums()['items']:
-            vk.photos.deleteAlbum(album_id=album['id'])
+    while vk.wall.get()['count'] != 0:
+        for post in vk.wall.get(count=100)['items']:
+            vk.wall.delete(post_id=post['id'])
             time.sleep(2)
 
     print('Completed!')
