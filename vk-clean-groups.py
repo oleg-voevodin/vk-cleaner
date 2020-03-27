@@ -1,4 +1,5 @@
 import vk_api
+import time
 
 login = input('Enter VK login: ')
 password = input('Enter VK password: ')
@@ -19,6 +20,7 @@ try:
     while vk.groups.get(count=1000)['count'] != 0:
         for group_id in vk.groups.get(count=1000)['items']:
             vk.groups.leave(group_id=group_id)
+            time.sleep(1)
 
     print('Completed!')
 except KeyboardInterrupt:
